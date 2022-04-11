@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabList: ["第一個", "第二個", "第三個", "第四個", "第五個"]
+    tabList: ["时间戳", "文件"]
   },
 
   /**
@@ -19,9 +19,9 @@ Page({
    * 页面切换事件监听
    */
   bindPageChange: function (e) {
-    var currentPosition = e.detail
-    wx.showToast({
-      title: String(currentPosition),
-    })
+    // var currentPosition = e.detail
+    // wx.showToast({
+    //   title: String(currentPosition),
+    // })
   }
 })

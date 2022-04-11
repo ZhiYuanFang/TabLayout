@@ -11,7 +11,7 @@
 .tab-sel {
   font-size: 28rpx;
   line-height: 28rpx;
-  color: #00A1FF;
+  color: white;
   padding-left: 15rpx;
   padding-right: 15rpx;
   padding-top: 20rpx;

@@ -44,7 +44,7 @@ Component({
      */
     indexAreaHeight: {
       type: Number,
-      value: 10
+      value: 0
     },
     /**
      * Index 样式

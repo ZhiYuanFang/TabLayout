@@ -1,30 +1,5 @@
 <!--components/tab-layout/tab-layou.wxml-->
 <view class="tablayout" id="tab-layout">
-  <!-- tablayout -->
-  <scroll-view class="sv-tab-layout" scroll-x="true" scroll-with-animation="true" scroll-left="{{tabLayoutScrollLeft}}">
-    <view class="{{isTabCenter?'tab-group-center':'tab-group'}}"
-      style="flex-flow:{{isSetIndexPositionAbsolute?'column':'column-reverse'}}">
-      <!-- index 活动区域（应与 tab-list 内容总宽度等宽）-->
-      <movable-area style="width:{{indexAreaWidth}}px;height:{{indexAreaHeight}}px;{{indexAreaStyle}}">
-        <!-- index 显示区域（应与 item-tab 等宽）-->
-        <movable-view class="tab-index" id="tab-index"
-          style="width:{{tabWidth}}px;height:{{indexAreaHeight}}px;{{indexStyle}}" x="{{tabIndexScrollX}}"
-          direction="horizontal" disabled="true">
-          <!-- index -->
-          <slot name="index"></slot>
-        </movable-view>
-      </movable-area>
-      <!-- tab 显示区域 -->
-      <view class="tab-list" id="tab-list" style="position:{{isSetIndexPositionAbsolute?'absolute':'unset'}};">
-        <view class="item-tab" id="tab{{index}}" wx:for="{{tabList}}" wx:key="index" bindtap="tapTab"
-          data-index="{{index}}" style="width:{{isTabSpaceEqual?tabWidth:auto}}px">
-          <!-- tab -->
-          <item-tab item="{{item}}" position="{{index}}" currentIndex="{{currentIndex}}"></item-tab>
-        </view>
-      </view>
-      <slot name="subTab"></slot>
-    </view>
-  </scroll-view>
   <slot name="subContent"></slot>
   <!-- swiper -->
   <swiper current='{{targetIndex}}' bindchange="onChangePage">
@@ -34,4 +9,21 @@
       </item-page>
     </swiper-item>
   </swiper>
+  
+  <!-- tablayout -->
+  <scroll-view class="sv-tab-layout" scroll-x="true" scroll-with-animation="true" scroll-left="{{tabLayoutScrollLeft}}">
+    <view class="{{isTabCenter?'tab-group-center':'tab-group'}}"
+      style="flex-flow:{{isSetIndexPositionAbsolute?'column':'column-reverse'}}">
+     
+      <!-- tab 显示区域 -->
+      <view class="tab-list" id="tab-list" style="position:{{isSetIndexPositionAbsolute?'absolute':'unset'}};">
+        <view class="item-tab" id="tab{{index}}" wx:for="{{tabList}}" wx:key="index" bindtap="tapTab"
+          data-index="{{index}}" style="width:{{isTabSpaceEqual?tabWidth:auto}}px;background: {{currentIndex==index ? '#CCCCCC' : '#f5f5f5'}};">
+          <!-- tab -->
+          <item-tab item="{{item}}" position="{{index}}" currentIndex="{{currentIndex}}"></item-tab>
+        </view>
+      </view>
+      <slot name="subTab"></slot>
+    </view>
+  </scroll-view>
 </view>
